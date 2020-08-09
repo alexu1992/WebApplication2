@@ -24,11 +24,11 @@ namespace WebApplication2.Controllers
         }
 
         [HttpGet]
-        public UserResponse Get(string username)
+        public UserResponse Get([FromQuery] UserRequest userRequest)
         {
             try
             {
-                return _userService.Get(new UserRequest() { Username = username });
+                return _userService.Get(userRequest);
             }
             catch(Exception ex)
             {

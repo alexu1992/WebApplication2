@@ -42,7 +42,9 @@ export const actionCreators = {
     requestUser: (username: string): AppThunkAction<KnownAction> => (dispatch, getState) => {
         // Only load data if it's something we don't already have (and are not already loading)
         const appState = getState();
-        if (appState && appState.user) {
+        var now = new Date();
+        var endDate = appState.user && appState.user.user.endDate ? new Date(appState.user.user.endDate) : new Date();
+        if (appState && appState.user && (appState.user.user.username != username || now > endDate)) {
             fetch(`user?username=${username}`)
                 .then(response => response.json() as Promise<User>)
                 .then(data => {
