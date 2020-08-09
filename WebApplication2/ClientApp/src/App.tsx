@@ -7,6 +7,6 @@ import './custom.css'
 
 export default () => (
     <Layout>
-        <Route path='/alex/:username' component={User} />
+        <Route path='/user/:username' component={User} />
     </Layout>
 );

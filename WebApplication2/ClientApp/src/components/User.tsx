@@ -28,6 +28,7 @@ class User extends React.PureComponent<UserProps> {
             <React.Fragment>
                 <h1 id="tabelLabel">Welcome to my page</h1>
                 <p>Have fun here</p>
+                <p>Change query string for switch users </p>
                 {this.renderUser()}
             </React.Fragment>
         );
