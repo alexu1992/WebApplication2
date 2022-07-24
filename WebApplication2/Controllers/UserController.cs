@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 using Infrastructure.Interfaces.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -20,16 +21,16 @@ namespace WebApplication2.Controllers
         }
 
         [HttpGet]
-        public UserResponse Get([FromQuery] UserRequest userRequest)
+        public IActionResult Get([FromQuery] UserRequest userRequest)
         {
             try
             {
-                return _userService.Get(userRequest);
+                return Ok(_userService.Get(userRequest));
             }
             catch(Exception ex)
             {
                 _logger.LogError(ex.Message);
-                return null;
+                return StatusCode((int)HttpStatusCode.InternalServerError);
             }
         }
     }
